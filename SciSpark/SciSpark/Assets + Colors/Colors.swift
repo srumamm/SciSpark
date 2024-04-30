@@ -4,20 +4,25 @@
 //
 //  Created by Sruthy Mammen on 4/29/24.
 //
-
 import SwiftUI
-import Foundation
 
 extension Color {
-    static let darkGray = Color(hex: 0x555555)
+    static let darkGray = Color(hex: "#647C90")
+    static let offWhite = Color(hex: "#FAF9F6")
     
-    init(hex: UInt, alpha: Double = 1.0) {
-        self.init(
-            .sRGB,
-            red: Double((hex >> 16) & 0xFF) / 255.0,
-            green: Double((hex >> 8) & 0xFF) / 255.0,
-            blue: Double(hex & 0xFF) / 255.0,
-            opacity: alpha
-        )
+    init(hex: String, alpha: Double = 1.0) {
+        var hexValue: UInt64 = 0
+        
+        // Convert the hexadecimal string to an integer
+        Scanner(string: hex.trimmingCharacters(in: CharacterSet.alphanumerics.inverted))
+            .scanHexInt64(&hexValue)
+        
+        // Extract red, green, blue components
+        let red = Double((hexValue & 0xFF0000) >> 16) / 255.0
+        let green = Double((hexValue & 0x00FF00) >> 8) / 255.0
+        let blue = Double(hexValue & 0x0000FF) / 255.0
+        
+        self.init(red: red, green: green, blue: blue, opacity: alpha)
     }
 }
+

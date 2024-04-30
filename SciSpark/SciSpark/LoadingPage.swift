@@ -9,17 +9,39 @@ import SwiftUI
 
 
 struct LoadingPage: View {
+    
     var body: some View {
         ZStack {
-            // Light sage background color
-            Color(red: 0.69, green: 0.77, blue: 0.64)
+            Color.darkGray
                 .edgesIgnoringSafeArea(.all)
             
-            // Text "Sci Spark" in the middle
-            Text("Sci Spark fix later")
-                .font(.largeTitle)
-                .fontWeight(.bold)
-                .foregroundColor(.black)
+            VStack(spacing: 16) {
+                
+                Spacer ()
+                
+                Text("SciSpark.")
+                    .font(.system(size: 50, weight: .bold, design: .serif))
+                    .foregroundColor(.white)
+                
+                Text("Empower Curiosity, Spark Knowledge:")
+                    .font(.system(size: 18))
+                    .foregroundColor(.white)
+                
+                Text("SciSpark,")
+                    .font(.system(size: 18))
+                    .foregroundColor(.white)
+                
+                Text("Where Science Thrives.")
+                    .font(.system(size: 18))
+                    .foregroundColor(.white)
+                
+                Spacer ()
+                Image(systemName: "atom")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(height: 200)
+                    .foregroundColor(.white)
+            }
         }
     }
 }
